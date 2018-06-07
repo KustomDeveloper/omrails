@@ -6,6 +6,9 @@ ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 
+#Use Devise for authetication
+gem 'devise'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
@@ -34,7 +37,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 
 # Add bootstrap from here https://github.com/twbs/bootstrap-rubygem
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
