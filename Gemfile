@@ -9,6 +9,9 @@ gem 'rails', '~> 5.2.0'
 #Use Devise for authetication
 gem 'devise'
 
+#active admin for backend
+gem 'activeadmin'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
