@@ -3,44 +3,49 @@
 <div class="container">
 <div class="row">
 <div class="col-md-4">
-    <% if user_signed_in? %>
-        <%= current_user.email %>
-    <% end %>        
+
+ 
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+
+          <h2 class="card-title">Your Account</h2>
+
+          <p class="card-text"><%= current_user.email %></p>
+
+          <p class="card-text">My Brief Bio...</p>
+          <a href="http://kustomdesigner.com" class="btn btn-primary">View Website</a>
+        </div>
+
+    </div>
+
 </div>
-<div class="col-md-4">
 
+<div class="col-md-8">
+        <ul class="list-group">
 
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Content</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tweets.each do |tweet| %>
-        <tr>
-          <td><%= tweet.user %></td>
-          <td><%= tweet.content %></td>
-          <td><%= link_to 'Show', tweet %></td>
-
-          <% if tweet.user == current_user %>
-              <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-              <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if user_signed_in? %>
+                <%= link_to 'New Tweet', new_tweet_path %>
           <% end %>
-          
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 
-  <br>
+          <% @tweets.each do |tweet| %>
 
-  <% if user_signed_in? %>
-      <%= link_to 'New Tweet', new_tweet_path %>
-  <% end %>
+                <%= link_to tweet, class: "list-group-item list-group-item-action" do %>
 
+                  <h5 class="list-group-item-heading"><%= tweet.user.email %></h5>          
+                  <p class="list-group-item-text"><%= tweet.content %></p>
+
+                <% end %>
+
+                  <% if tweet.user == current_user %>
+                      <%= link_to 'Edit', edit_tweet_path(tweet), :class => 'text-right d-inline'  %>
+                      <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'text-right d-inline' %>
+                  <% end %>
+          <% end %>
+
+       </ul>
+
+    </div> <!-- .col-md-8 -->
+  </div>
 </div>
