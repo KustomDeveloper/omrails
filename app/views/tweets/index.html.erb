@@ -12,7 +12,7 @@
 
           <h2 class="card-title">Your Account</h2>
 
-          <p class="card-text"><%= current_user.email %></p>
+          <p class="card-text"><%= current_user.username %></p>
 
           <p class="card-text">My Brief Bio...</p>
           <a href="http://kustomdesigner.com" class="btn btn-primary">View Website</a>
@@ -33,7 +33,7 @@
 
                 <%= link_to tweet, class: "list-group-item list-group-item-action" do %>
 
-                  <h5 class="list-group-item-heading"><%= tweet.user.email %></h5>          
+                  <h5 class="list-group-item-heading"><%= tweet.user.username %></h5>          
                   <p class="list-group-item-text"><%= tweet.content %></p>
 
                 <% end %>
