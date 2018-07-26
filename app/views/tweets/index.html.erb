@@ -12,10 +12,10 @@
 
           <h2 class="card-title">Your Account</h2>
 
-          <p class="card-text"><%= current_user.username %></p>
+          <p class="card-text"><%= link_to current_user.username, user_path(current_user.username) %></p>
 
           <p class="card-text">My Brief Bio...</p>
-          <a href="http://kustomdesigner.com" class="btn btn-primary">View Website</a>
+ 
         </div>
 
     </div>
