@@ -12,8 +12,16 @@
 
 		          <p class="card-text"><%= @user.name %></p>
 
-		          <p class="card-text">My Brief Bio...</p>
-		 
+		          <p class="card-text">
+
+		          	<% if current_user.following?(@user) %>	        
+		          	  <%= link_to "Unfollow", unfollow_user_path(@user.username), method: :delete %>
+		          	<% else %>
+		          	<%= link_to "Follow", follow_user_path(@user.username), method: :post %>
+		 			<% end %>
+
+		 		  </p>
+		 		  
 		        </div>
 
 		    </div>

@@ -1,0 +1,46 @@
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+
+          <h2 class="card-title">Your Account</h2>
+
+          <p class="card-text"><%= link_to current_user.username, user_path(current_user.username) %></p>
+ 
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-8">
+        <ul class="list-group">
+
+          <% if user_signed_in? %>
+                <%= link_to 'New Tweet', new_tweet_path %>
+          <% end %>
+
+          <% @tweets.each do |tweet| %>
+
+                <%= link_to tweet, class: "list-group-item list-group-item-action" do %>
+
+                  <h5 class="list-group-item-heading"><%= tweet.user.username %></h5>          
+                  <p class="list-group-item-text"><%= tweet.content %></p>
+
+                <% end %>
+
+                  <% if tweet.user == current_user %>
+                      <%= link_to 'Edit', edit_tweet_path(tweet), :class => 'text-right d-inline'  %>
+                      <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'text-right d-inline' %>
+                  <% end %>
+          <% end %>
+
+       </ul>
+
+    </div> <!-- .col-md-8 -->
+  </div>
+</div>
