@@ -10,12 +10,14 @@
 
         <div class="card-body">
 
-          <h2 class="card-title">Your Account</h2>
+          <%if user_signed_in? %>
+              <h2 class="card-title">Your Account</h2>
+              <p class="card-text"><%= link_to current_user.username, user_path(current_user.username) %></p>
+              <p class="card-text">My Brief Bio...</p>
+          <% else %>
+              <p class="card-text"><%= link_to "Sign Up Now!", signup_path %></p>
+          <% end %>
 
-          <p class="card-text"><%= link_to current_user.username, user_path(current_user.username) %></p>
-
-          <p class="card-text">My Brief Bio...</p>
- 
         </div>
 
     </div>
