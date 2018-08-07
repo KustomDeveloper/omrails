@@ -3,24 +3,50 @@
     <p id="notice"><%= notice %></p>
 
     <div class="row">
-
       <div clas="col-md-12">
-        <h1>Items</h1>
+          <h1>Items</h1>
         
           <% @items.each do |item| %>
-            <p>User: <%= item.user.email %></p><br/>
+            <p>Votes: <%= item.votes_for.up.size %></p><br/>
+            <p>User: <%= item.user.username %></p><br/>
             <p>Title: <%= item.title %></p><br/>
             <p>Url: <%= item.url %></p><br/>
-            <p>Text: <%= item.text %></p><br/>     
-          
-             <p><%= link_to 'Show', item %> | 
-              <%= link_to 'Edit', edit_item_path(item) %> | 
-              <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %> |
-              <%= link_to 'New', new_item_path %>
-            </p>
-          <% end %>
-      </div><!-- .col-md-12 -->
+            <p>Text: <%= item.text %></p><br/>  
 
-     <div>
+      </div><!-- .col-md-12 -->
+    <div><!-- .row -->
+
+    <% if user_signed_in?%>  
+
+        <div class="row">
+            <div class="col-md-2">     
+              <p><%= link_to 'Show', item %> 
+            </div><!-- col-md-2 -->
+
+            <div class="col-md-2">     
+                <% if current_user.voted_up_on? item %>
+                      <p><%= link_to 'Unvote', unvote_item_path(item), method: :delete %></p>
+                <% else %>
+                  <p><%= link_to 'Vote', vote_item_path(item), method: :post %></p>
+                <% end %>
+            </div><!-- col-md-2 -->
+
+            <div class="col-md-2">  
+                  <p><%= link_to 'Edit', edit_item_path(item) %> </p>
+            </div><!-- col-md-2 -->
+
+            <div class="col-md-2">  
+                  <p><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+            </div><!-- col-md-2 -->
+
+            <div class="col-md-2">  
+                  <p><%= link_to 'New', new_item_path %> </p>
+            </div><!-- col-md-2 -->
+
+        <% end %><!-- endif -->
+
+      
+      <% end %><!-- end item loop -->
+
   </div>
 </div>

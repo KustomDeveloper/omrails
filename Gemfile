@@ -42,7 +42,11 @@ gem 'jquery-rails'
 # Add bootstrap from here https://github.com/twbs/bootstrap-rubygem
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+# Add followers gem
 gem 'acts_as_follower', github: "tcocca/acts_as_follower"
+
+# Add upvote gem
+gem 'acts_as_votable', '~> 0.11.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
